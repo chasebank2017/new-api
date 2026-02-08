@@ -194,20 +194,11 @@ const PageLayout = () => {
               style={{ minHeight: '100%' }}
             >
               <App />
+              <FooterBar />
             </div>
           </Content>
         </Layout>
       </Layout>
-      {/* Footer 放在最外层，100% 宽度贯通 */}
-      <Layout.Footer
-        style={{
-          flex: '0 0 auto',
-          width: '100%',
-          zIndex: 101, // Ensure it's above fixed Sider for full-width look
-        }}
-      >
-        <FooterBar />
-      </Layout.Footer>
       <ToastContainer />
     </Layout>
   );
