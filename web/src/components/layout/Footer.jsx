@@ -4,6 +4,7 @@
 
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import CrabLogo from './CrabLogo';
 
 const BRAND_NAME = 'OpenClaw API';

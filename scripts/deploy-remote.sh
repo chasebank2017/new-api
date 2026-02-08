@@ -4,7 +4,7 @@
 
 set -e
 SERVER="${DEPLOY_SERVER:-root@101.36.104.77}"
-COMPOSE_DIR="${DEPLOY_COMPOSE_DIR:-/opt/openclawapi-ai}"
+COMPOSE_DIR="${DEPLOY_COMPOSE_DIR:-/opt/openclawapi.ai}"
 IMAGE="${DEPLOY_IMAGE:-chasebank2023/new-api:latest}"
 
 echo "→ 在服务器 $SERVER 上更新 new-api 并重启 ..."
