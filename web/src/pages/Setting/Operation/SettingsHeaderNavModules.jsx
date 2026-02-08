@@ -38,16 +38,13 @@ export default function SettingsHeaderNavModules(props) {
   const [loading, setLoading] = useState(false);
   const [statusState, statusDispatch] = useContext(StatusContext);
 
-  // 顶栏模块管理状态
+  // 顶栏模块管理状态（仅保留控制台、模型商店；首页/文档/关于已移除）
   const [headerNavModules, setHeaderNavModules] = useState({
-    home: true,
     console: true,
     pricing: {
       enabled: true,
-      requireAuth: false, // 默认不需要登录鉴权
+      requireAuth: false,
     },
-    docs: true,
-    about: true,
   });
 
   // 处理顶栏模块配置变更
@@ -80,14 +77,8 @@ export default function SettingsHeaderNavModules(props) {
   // 重置顶栏模块为默认配置
   function resetHeaderNavModules() {
     const defaultModules = {
-      home: true,
       console: true,
-      pricing: {
-        enabled: true,
-        requireAuth: false,
-      },
-      docs: true,
-      about: true,
+      pricing: { enabled: true, requireAuth: false },
     };
     setHeaderNavModules(defaultModules);
     showSuccess(t('已重置为默认配置'));
@@ -146,47 +137,26 @@ export default function SettingsHeaderNavModules(props) {
       } catch (error) {
         // 使用默认配置
         const defaultModules = {
-          home: true,
           console: true,
-          pricing: {
-            enabled: true,
-            requireAuth: false,
-          },
-          docs: true,
-          about: true,
+          pricing: { enabled: true, requireAuth: false },
         };
         setHeaderNavModules(defaultModules);
       }
     }
   }, [props.options]);
 
-  // 模块配置数据
+  // 模块配置数据（仅控制台、模型商店）
   const moduleConfigs = [
     {
-      key: 'home',
-      title: t('首页'),
-      description: t('用户主页，展示系统信息'),
-    },
-    {
       key: 'console',
-      title: t('控制台'),
+      title: t('我的'),
       description: t('用户控制面板，管理账户'),
     },
     {
       key: 'pricing',
-      title: t('模型广场'),
+      title: t('模型商店'),
       description: t('模型定价，需要登录访问'),
-      hasSubConfig: true, // 标识该模块有子配置
-    },
-    {
-      key: 'docs',
-      title: t('文档'),
-      description: t('系统文档和帮助信息'),
-    },
-    {
-      key: 'about',
-      title: t('关于'),
-      description: t('关于系统的详细信息'),
+      hasSubConfig: true,
     },
   ];
 

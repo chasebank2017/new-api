@@ -39,7 +39,7 @@ import { useTranslation } from 'react-i18next';
 import UserInfoHeader from './personal/components/UserInfoHeader';
 import AccountManagement from './personal/cards/AccountManagement';
 import NotificationSettings from './personal/cards/NotificationSettings';
-import PreferencesSettings from './personal/cards/PreferencesSettings';
+// 语言偏好已移除，与顶栏语言切换一致
 import CheckinCalendar from './personal/cards/CheckinCalendar';
 import EmailBindModal from './personal/modals/EmailBindModal';
 import WeChatBindModal from './personal/modals/WeChatBindModal';
@@ -484,8 +484,6 @@ const PersonalSetting = () => {
                 onPasskeyDelete={handleRemovePasskey}
               />
 
-              {/* 偏好设置（语言等） */}
-              <PreferencesSettings t={t} />
             </div>
 
             {/* 右侧：其他设置 */}

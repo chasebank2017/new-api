@@ -21,34 +21,33 @@ import { useMemo } from 'react';
 
 export const useNavigation = (t, docsLink, headerNavModules) => {
   const mainNavLinks = useMemo(() => {
-    // 只保留控制台、模型广场；首页/文档/关于已移除
     const defaultModules = {
       console: true,
       pricing: true,
     };
     const modules = headerNavModules || defaultModules;
 
-    const allLinks = [
+    const internalLinks = [
+      { text: t('我的'), itemKey: 'console', to: '/console' },
+      { text: t('模型商店'), itemKey: 'pricing', to: '/pricing' },
+      { text: t('使用文档'), itemKey: 'docs', to: '/docs', isExternal: false },
       {
-        text: t('控制台'),
-        itemKey: 'console',
-        to: '/console',
+        text: t('常见问题'),
+        itemKey: 'faq',
+        isExternal: true,
+        externalLink: 'https://openclawapi.ai/#faq',
       },
-      {
-        text: t('模型广场'),
-        itemKey: 'pricing',
-        to: '/pricing',
-      },
-    ];
-
-    return allLinks.filter((link) => {
+    ].filter((link) => {
       if (link.itemKey === 'pricing') {
         return typeof modules.pricing === 'object'
           ? modules.pricing.enabled !== false
           : modules.pricing !== false;
       }
-      return modules[link.itemKey] !== false;
+      if (link.itemKey === 'console') return modules[link.itemKey] !== false;
+      return true; // 使用文档、常见问题始终显示
     });
+
+    return internalLinks;
   }, [t, headerNavModules]);
 
   return {

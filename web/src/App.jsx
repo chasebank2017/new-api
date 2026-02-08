@@ -49,6 +49,7 @@ import OAuth2Callback from './components/auth/OAuth2Callback';
 import PersonalSetting from './components/settings/PersonalSetting';
 import Setup from './pages/Setup';
 import SetupCheck from './components/layout/SetupCheck';
+import DocsPage from './pages/Docs';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const UserAgreement = lazy(() => import('./pages/UserAgreement'));
@@ -182,6 +183,14 @@ function App() {
               <AuthRedirect>
                 <RegisterForm />
               </AuthRedirect>
+            </Suspense>
+          }
+        />
+        <Route
+          path='/docs'
+          element={
+            <Suspense fallback={<Loading></Loading>} key={location.pathname}>
+              <DocsPage />
             </Suspense>
           }
         />

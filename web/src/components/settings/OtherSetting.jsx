@@ -444,22 +444,7 @@ const OtherSetting = () => {
               <Button onClick={submitLogo} loading={loadingInput['Logo']}>
                 {t('设置 Logo')}
               </Button>
-              <Form.TextArea
-                label={t('首页内容')}
-                placeholder={t(
-                  '在此输入首页内容，支持 Markdown & HTML 代码，设置后首页的状态信息将不再显示。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为首页',
-                )}
-                field={'HomePageContent'}
-                onChange={handleInputChange}
-                style={{ fontFamily: 'JetBrains Mono, Consolas' }}
-                autosize={{ minRows: 6, maxRows: 12 }}
-              />
-              <Button
-                onClick={() => submitOption('HomePageContent')}
-                loading={loadingInput['HomePageContent']}
-              >
-                {t('设置首页内容')}
-              </Button>
+              {/* 首页内容设置已移除 */}
               <Form.TextArea
                 label={t('关于')}
                 placeholder={t(
