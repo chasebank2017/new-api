@@ -21,24 +21,14 @@ import { useMemo } from 'react';
 
 export const useNavigation = (t, docsLink, headerNavModules) => {
   const mainNavLinks = useMemo(() => {
-    // 默认配置，如果没有传入配置则显示所有模块
+    // 只保留控制台、模型广场；首页/文档/关于已移除
     const defaultModules = {
-      home: true,
       console: true,
       pricing: true,
-      docs: true,
-      about: true,
     };
-
-    // 使用传入的配置或默认配置
     const modules = headerNavModules || defaultModules;
 
     const allLinks = [
-      {
-        text: t('首页'),
-        itemKey: 'home',
-        to: '/',
-      },
       {
         text: t('控制台'),
         itemKey: 'console',
@@ -49,37 +39,17 @@ export const useNavigation = (t, docsLink, headerNavModules) => {
         itemKey: 'pricing',
         to: '/pricing',
       },
-      ...(docsLink
-        ? [
-            {
-              text: t('文档'),
-              itemKey: 'docs',
-              isExternal: true,
-              externalLink: docsLink,
-            },
-          ]
-        : []),
-      {
-        text: t('关于'),
-        itemKey: 'about',
-        to: '/about',
-      },
     ];
 
-    // 根据配置过滤导航链接
     return allLinks.filter((link) => {
-      if (link.itemKey === 'docs') {
-        return docsLink && modules.docs;
-      }
       if (link.itemKey === 'pricing') {
-        // 支持新的pricing配置格式
         return typeof modules.pricing === 'object'
-          ? modules.pricing.enabled
-          : modules.pricing;
+          ? modules.pricing.enabled !== false
+          : modules.pricing !== false;
       }
-      return modules[link.itemKey] === true;
+      return modules[link.itemKey] !== false;
     });
-  }, [t, docsLink, headerNavModules]);
+  }, [t, headerNavModules]);
 
   return {
     mainNavLinks,

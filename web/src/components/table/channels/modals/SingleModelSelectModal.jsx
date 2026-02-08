@@ -28,10 +28,6 @@ import {
   Radio,
   Typography,
 } from '@douyinfe/semi-ui';
-import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
 import { IconSearch } from '@douyinfe/semi-icons';
 import { getModelCategories } from '../../../../helpers/render';
 
@@ -140,10 +136,7 @@ const SingleModelSelectModal = ({
       <div style={{ maxHeight: 400, overflowY: 'auto', paddingRight: 8 }}>
         {filteredModels.length === 0 ? (
           <Empty
-            image={<IllustrationNoResult style={{ width: 150, height: 150 }} />}
-            darkModeImage={
-              <IllustrationNoResultDark style={{ width: 150, height: 150 }} />
-            }
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
             description={t('暂无匹配模型')}
             style={{ padding: 30 }}
           />

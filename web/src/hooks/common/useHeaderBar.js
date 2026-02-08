@@ -1,21 +1,4 @@
-/*
-Copyright (C) 2025 QuantumNous
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
-*/
+/** OpenClaw API - Console header bar logic (theme/locale synced with frontend). */
 
 import { useState, useEffect, useContext, useCallback, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -147,7 +130,11 @@ export const useHeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
 
   const handleLanguageChange = useCallback(
     async (lang) => {
-      // Change language immediately for responsive UX
+      try {
+        localStorage.setItem('locale', lang);
+      } catch (e) {
+        // ignore
+      }
       i18n.changeLanguage(lang);
 
       // If user is logged in, save preference to backend
@@ -185,13 +172,7 @@ export const useHeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
 
   const handleThemeToggle = useCallback(
     (newTheme) => {
-      if (
-        !newTheme ||
-        (newTheme !== 'light' && newTheme !== 'dark' && newTheme !== 'auto')
-      ) {
-        return;
-      }
-      setTheme(newTheme);
+      if (newTheme === 'light' || newTheme === 'dark') setTheme(newTheme);
     },
     [setTheme],
   );

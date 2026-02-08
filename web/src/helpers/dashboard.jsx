@@ -20,10 +20,6 @@ For commercial licensing, please contact support@quantumnous.com
 import React from 'react';
 import { Progress, Divider, Empty } from '@douyinfe/semi-ui';
 import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
-import {
   timestamp2string,
   timestamp2string1,
   isDataCrossYear,
@@ -178,10 +174,7 @@ export const renderMonitorList = (
     return (
       <div className='flex justify-center items-center py-4'>
         <Empty
-          image={<IllustrationConstruction style={ILLUSTRATION_SIZE} />}
-          darkModeImage={
-            <IllustrationConstructionDark style={ILLUSTRATION_SIZE} />
-          }
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
           title={t('暂无监控数据')}
         />
       </div>
@@ -203,7 +196,7 @@ export const renderMonitorList = (
             className='w-2 h-2 rounded-full flex-shrink-0'
             style={{ backgroundColor: getUptimeStatusColor(monitor.status) }}
           />
-          <span className='text-sm font-medium text-gray-900'>
+          <span className='text-sm font-medium !text-semi-color-text-0'>
             {monitor.name}
           </span>
         </div>

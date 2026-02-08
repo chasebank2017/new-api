@@ -499,7 +499,7 @@ const RegisterForm = () => {
                   {t('已有账户？')}{' '}
                   <Link
                     to='/login'
-                    className='text-blue-600 hover:text-blue-800 font-medium'
+                    className='!text-semi-color-primary hover:!opacity-90 font-medium'
                   >
                     {t('登录')}
                   </Link>
@@ -609,7 +609,7 @@ const RegisterForm = () => {
                               href='/user-agreement'
                               target='_blank'
                               rel='noopener noreferrer'
-                              className='text-blue-600 hover:text-blue-800 mx-1'
+                              className='!text-semi-color-primary hover:!opacity-90 mx-1'
                             >
                               {t('用户协议')}
                             </a>
@@ -622,7 +622,7 @@ const RegisterForm = () => {
                               href='/privacy-policy'
                               target='_blank'
                               rel='noopener noreferrer'
-                              className='text-blue-600 hover:text-blue-800 mx-1'
+                              className='!text-semi-color-primary hover:!opacity-90 mx-1'
                             >
                               {t('隐私政策')}
                             </a>
@@ -680,7 +680,7 @@ const RegisterForm = () => {
                   {t('已有账户？')}{' '}
                   <Link
                     to='/login'
-                    className='text-blue-600 hover:text-blue-800 font-medium'
+                    className='!text-semi-color-primary hover:!opacity-90 font-medium'
                   >
                     {t('登录')}
                   </Link>

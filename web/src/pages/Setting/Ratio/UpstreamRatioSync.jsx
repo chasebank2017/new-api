@@ -47,10 +47,6 @@ import {
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
 import { DEFAULT_ENDPOINT } from '../../../constants';
 import { useTranslation } from 'react-i18next';
-import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
 import ChannelSelectorModal from '../../../components/settings/ChannelSelectorModal';
 
 function ConflictConfirmModal({ t, visible, items, onOk, onCancel }) {
@@ -543,10 +539,7 @@ export default function UpstreamRatioSync(props) {
     if (filteredDataSource.length === 0) {
       return (
         <Empty
-          image={<IllustrationNoResult style={{ width: 150, height: 150 }} />}
-          darkModeImage={
-            <IllustrationNoResultDark style={{ width: 150, height: 150 }} />
-          }
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
           description={
             searchKeyword.trim()
               ? t('未找到匹配的模型')

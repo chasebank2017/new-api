@@ -1,27 +1,14 @@
-/*
-Copyright (C) 2025 QuantumNous
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
-*/
+/**
+ * 页脚与官网 openclawapi.ai 一致：品牌为 OpenClaw API，版权与链接统一。
+ */
 
 import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@douyinfe/semi-ui';
 import { getFooterHTML, getLogo, getSystemName } from '../../helpers';
 import { StatusContext } from '../../context/Status';
+import CrabLogo from './CrabLogo';
+
+const BRAND_NAME = 'OpenClaw API';
 
 const FooterBar = () => {
   const { t } = useTranslation();
@@ -32,186 +19,84 @@ const FooterBar = () => {
   const isDemoSiteMode = statusState?.status?.demo_site_enabled || false;
 
   const loadFooter = () => {
-    let footer_html = localStorage.getItem('footer_html');
-    if (footer_html) {
-      setFooter(footer_html);
-    }
+    const footer_html = localStorage.getItem('footer_html');
+    if (footer_html) setFooter(footer_html);
   };
 
   const currentYear = new Date().getFullYear();
 
   const customFooter = useMemo(
     () => (
-      <footer className='relative h-auto py-16 px-6 md:px-24 w-full flex flex-col items-center justify-between overflow-hidden'>
-        <div className='absolute hidden md:block top-[204px] left-[-100px] w-[151px] h-[151px] rounded-full bg-[#FFD166]'></div>
-        <div className='absolute md:hidden bottom-[20px] left-[-50px] w-[80px] h-[80px] rounded-full bg-[#FFD166] opacity-60'></div>
-
-        {isDemoSiteMode && (
-          <div className='flex flex-col md:flex-row justify-between w-full max-w-[1110px] mb-10 gap-8'>
-            <div className='flex-shrink-0'>
-              <img
-                src={logo}
-                alt={systemName}
-                className='w-16 h-16 rounded-full bg-gray-800 p-1.5 object-contain'
-              />
+      <footer className='border-t border-semi-color-border bg-semi-color-bg-1/50 w-full'>
+        <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='py-12 grid grid-cols-2 md:grid-cols-5 gap-8'>
+            <div className='col-span-2 md:col-span-1'>
+              <a
+                href='https://openclawapi.ai'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-2.5 mb-4'
+              >
+                <div className='flex h-7 w-7 items-center justify-center rounded-md bg-semi-color-primary/10 border border-semi-color-primary/20'>
+                  <CrabLogo className='h-4 w-4 !text-semi-color-primary' />
+                </div>
+                <span className='text-sm font-semibold !text-semi-color-text-0'>
+                  Open<span className='!text-semi-color-primary'>Claw</span> API
+                </span>
+              </a>
+              <p className='text-sm !text-semi-color-text-1 leading-relaxed'>
+                {t('页脚品牌描述（与官网一致）')}
+              </p>
             </div>
-
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full'>
-              <div className='text-left'>
-                <p className='!text-semi-color-text-0 font-semibold mb-5'>
-                  {t('关于我们')}
-                </p>
-                <div className='flex flex-col gap-4'>
-                  <a
-                    href='https://docs.newapi.pro/wiki/project-introduction/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('关于项目')}
-                  </a>
-                  <a
-                    href='https://docs.newapi.pro/support/community-interaction/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('联系我们')}
-                  </a>
-                  <a
-                    href='https://docs.newapi.pro/wiki/features-introduction/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('功能特性')}
-                  </a>
-                </div>
-              </div>
-
-              <div className='text-left'>
-                <p className='!text-semi-color-text-0 font-semibold mb-5'>
-                  {t('文档')}
-                </p>
-                <div className='flex flex-col gap-4'>
-                  <a
-                    href='https://docs.newapi.pro/getting-started/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('快速开始')}
-                  </a>
-                  <a
-                    href='https://docs.newapi.pro/installation/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('安装指南')}
-                  </a>
-                  <a
-                    href='https://docs.newapi.pro/api/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    {t('API 文档')}
-                  </a>
-                </div>
-              </div>
-
-              <div className='text-left'>
-                <p className='!text-semi-color-text-0 font-semibold mb-5'>
-                  {t('相关项目')}
-                </p>
-                <div className='flex flex-col gap-4'>
-                  <a
-                    href='https://github.com/songquanpeng/one-api'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    One API
-                  </a>
-                  <a
-                    href='https://github.com/novicezk/midjourney-proxy'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    Midjourney-Proxy
-                  </a>
-                  <a
-                    href='https://github.com/Calcium-Ion/neko-api-key-tool'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    neko-api-key-tool
-                  </a>
-                </div>
-              </div>
-
-              <div className='text-left'>
-                <p className='!text-semi-color-text-0 font-semibold mb-5'>
-                  {t('友情链接')}
-                </p>
-                <div className='flex flex-col gap-4'>
-                  <a
-                    href='https://github.com/Calcium-Ion/new-api-horizon'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    new-api-horizon
-                  </a>
-                  <a
-                    href='https://github.com/coaidev/coai'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    CoAI
-                  </a>
-                  <a
-                    href='https://www.gpt-load.com/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='!text-semi-color-text-1'
-                  >
-                    GPT-Load
-                  </a>
-                </div>
-              </div>
+            <div>
+              <h4 className='text-sm font-semibold !text-semi-color-text-0 mb-4'>{t('产品')}</h4>
+              <ul className='space-y-2.5'>
+                <li><a href='https://openclawapi.ai/#models' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('模型列表')}</a></li>
+                <li><a href='https://openclawapi.ai/#pricing' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('价格方案')}</a></li>
+                <li><a href='https://openclawapi.ai/docs' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('使用文档')}</a></li>
+                <li><a href='https://api.openclawapi.ai' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('控制面板')}</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className='text-sm font-semibold !text-semi-color-text-0 mb-4'>{t('支持')}</h4>
+              <ul className='space-y-2.5'>
+                <li><a href='https://openclawapi.ai/#faq' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('常见问题')}</a></li>
+                <li><a href='mailto:support@openclawapi.ai' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('联系我们')}</a></li>
+                <li><a href='https://status.openclawapi.ai' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('服务状态')}</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className='text-sm font-semibold !text-semi-color-text-0 mb-4'>{t('资源')}</h4>
+              <ul className='space-y-2.5'>
+                <li><a href='https://openclawapi.ai/about' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('关于我们')}</a></li>
+                <li><a href='https://openclawapi.ai/docs' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('博客')}</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className='text-sm font-semibold !text-semi-color-text-0 mb-4'>{t('法律')}</h4>
+              <ul className='space-y-2.5'>
+                <li><a href='https://openclawapi.ai/terms' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('服务条款')}</a></li>
+                <li><a href='https://openclawapi.ai/privacy' target='_blank' rel='noopener noreferrer' className='text-sm !text-semi-color-primary/80 hover:!text-[var(--oc-accent)] transition-colors duration-200'>{t('隐私政策')}</a></li>
+              </ul>
             </div>
           </div>
-        )}
-
-        <div className='flex flex-col md:flex-row items-center justify-between w-full max-w-[1110px] gap-6'>
-          <div className='flex flex-wrap items-center gap-2'>
-            <Typography.Text className='text-sm !text-semi-color-text-1'>
-              © {currentYear} {systemName}. {t('版权所有')}
-            </Typography.Text>
-          </div>
-
-          <div className='text-sm'>
-            <span className='!text-semi-color-text-1'>
-              {t('设计与开发由')}{' '}
-            </span>
-            <a
-              href='https://github.com/QuantumNous/new-api'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='!text-semi-color-primary font-medium'
-            >
-              New API
-            </a>
+          <div className='border-t border-semi-color-border py-6 flex flex-col sm:flex-row items-center justify-between gap-4'>
+            <p className='text-xs !text-semi-color-text-2'>
+              © {currentYear} {BRAND_NAME}. {t('保留所有权利。')}
+            </p>
+            <div className='flex items-center gap-4'>
+              <a href='https://github.com/openclawapi' target='_blank' rel='noopener noreferrer' className='!text-semi-color-text-2 hover:!text-semi-color-primary' aria-label='GitHub'>
+                <svg className='h-5 w-5' fill='currentColor' viewBox='0 0 24 24'><path d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' /></svg>
+              </a>
+              <a href='https://x.com/openclawapi' target='_blank' rel='noopener noreferrer' className='!text-semi-color-text-2 hover:!text-semi-color-primary' aria-label='X'>
+                <svg className='h-5 w-5' fill='currentColor' viewBox='0 0 24 24'><path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' /></svg>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
     ),
-    [logo, systemName, t, currentYear, isDemoSiteMode],
+    [t, currentYear],
   );
 
   useEffect(() => {
@@ -221,23 +106,10 @@ const FooterBar = () => {
   return (
     <div className='w-full'>
       {footer ? (
-        <div className='relative'>
-          <div
-            className='custom-footer'
-            dangerouslySetInnerHTML={{ __html: footer }}
-          ></div>
-          <div className='absolute bottom-2 right-4 text-xs !text-semi-color-text-2 opacity-70'>
-            <span>{t('设计与开发由')} </span>
-            <a
-              href='https://github.com/QuantumNous/new-api'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='!text-semi-color-primary font-medium'
-            >
-              New API
-            </a>
-          </div>
-        </div>
+        <div
+          className='custom-footer'
+          dangerouslySetInnerHTML={{ __html: footer }}
+        />
       ) : (
         customFooter
       )}

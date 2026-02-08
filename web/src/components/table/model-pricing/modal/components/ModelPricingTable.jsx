@@ -135,7 +135,7 @@ const ModelPricingTable = ({
           dataIndex: 'inputPrice',
           render: (text) => (
             <>
-              <div className='font-semibold text-orange-600'>{text}</div>
+              <div className='font-semibold !text-semi-color-primary'>{text}</div>
               <div className='text-xs text-gray-500'>
                 / {tokenUnit === 'K' ? '1K' : '1M'} tokens
               </div>
@@ -147,7 +147,7 @@ const ModelPricingTable = ({
           dataIndex: 'outputPrice',
           render: (text) => (
             <>
-              <div className='font-semibold text-orange-600'>{text}</div>
+              <div className='font-semibold !text-semi-color-primary'>{text}</div>
               <div className='text-xs text-gray-500'>
                 / {tokenUnit === 'K' ? '1K' : '1M'} tokens
               </div>
@@ -162,7 +162,7 @@ const ModelPricingTable = ({
         dataIndex: 'fixedPrice',
         render: (text) => (
           <>
-            <div className='font-semibold text-orange-600'>{text}</div>
+            <div className='font-semibold !text-semi-color-primary'>{text}</div>
             <div className='text-xs text-gray-500'>/ 次</div>
           </>
         ),

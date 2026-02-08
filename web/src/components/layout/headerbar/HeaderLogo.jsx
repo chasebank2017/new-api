@@ -22,6 +22,25 @@ import { Link } from 'react-router-dom';
 import { Typography, Tag } from '@douyinfe/semi-ui';
 import SkeletonWrapper from '../components/SkeletonWrapper';
 
+const BRAND_DISPLAY_NAME = 'OpenClaw API';
+
+const renderBrandName = (name) => {
+  if (!name || typeof name !== 'string') return name;
+  const i = name.indexOf('Claw');
+  if (i === -1) {
+    return <span>{name}</span>;
+  }
+  const before = name.slice(0, i);
+  const after = name.slice(i + 4);
+  return (
+    <span>
+      {before}
+      <span className='!text-semi-color-primary'>Claw</span>
+      {after}
+    </span>
+  );
+};
+
 const HeaderLogo = ({
   isMobile,
   isConsoleRoute,
@@ -57,9 +76,9 @@ const HeaderLogo = ({
           >
             <Typography.Title
               heading={4}
-              className='!text-lg !font-semibold !mb-0'
+              className='!text-lg !font-semibold !mb-0 !tracking-tight'
             >
-              {systemName}
+              {renderBrandName(systemName || BRAND_DISPLAY_NAME)}
             </Typography.Title>
           </SkeletonWrapper>
           {(isSelfUseMode || isDemoSiteMode) && !isLoading && (

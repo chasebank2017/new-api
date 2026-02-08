@@ -29,10 +29,6 @@ import {
   Modal,
   Switch,
 } from '@douyinfe/semi-ui';
-import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
 import { Plus, Edit, Trash2, Save, Activity } from 'lucide-react';
 import { API, showError, showSuccess } from '../../../helpers';
 import { useTranslation } from 'react-i18next';
@@ -437,12 +433,7 @@ const SettingsUptimeKuma = ({ options, refresh }) => {
           loading={loading}
           empty={
             <Empty
-              image={
-                <IllustrationNoResult style={{ width: 150, height: 150 }} />
-              }
-              darkModeImage={
-                <IllustrationNoResultDark style={{ width: 150, height: 150 }} />
-              }
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
               description={t('暂无监控数据')}
               style={{ padding: 30 }}
             />

@@ -260,12 +260,9 @@ const PricingVendorIntro = memo(
     );
 
     const createCoverStyle = useCallback(
-      (primaryColor) => ({
-        '--palette-primary-darkerChannel': primaryColor,
-        backgroundImage: `linear-gradient(0deg, rgba(var(--palette-primary-darkerChannel) / 80%), rgba(var(--palette-primary-darkerChannel) / 80%)), url('/cover-4.webp')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+      () => ({
+        backgroundColor: 'var(--semi-color-bg-1)',
+        borderBottom: '1px solid var(--semi-color-border)',
       }),
       [],
     );
@@ -324,7 +321,7 @@ const PricingVendorIntro = memo(
           cover={
             <div
               className='relative h-full'
-              style={createCoverStyle(primaryDarkerChannel)}
+              style={createCoverStyle()}
             >
               <div className='relative z-10 h-full flex items-center justify-between p-4'>
                 <div className='flex-1 min-w-0 mr-4'>

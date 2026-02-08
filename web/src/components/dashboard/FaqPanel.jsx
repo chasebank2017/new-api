@@ -22,10 +22,6 @@ import { Card, Collapse, Empty } from '@douyinfe/semi-ui';
 import { HelpCircle } from 'lucide-react';
 import { IconPlus, IconMinus } from '@douyinfe/semi-icons';
 import { marked } from 'marked';
-import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const FaqPanel = ({
@@ -71,10 +67,7 @@ const FaqPanel = ({
         ) : (
           <div className='flex justify-center items-center py-8'>
             <Empty
-              image={<IllustrationConstruction style={ILLUSTRATION_SIZE} />}
-              darkModeImage={
-                <IllustrationConstructionDark style={ILLUSTRATION_SIZE} />
-              }
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
               title={t('暂无常见问答')}
               description={t('请联系管理员在系统设置中配置常见问答')}
             />

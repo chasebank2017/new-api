@@ -149,6 +149,7 @@ const PageLayout = () => {
           overflow: isMobile ? 'visible' : 'auto',
           display: 'flex',
           flexDirection: 'column',
+          marginTop: 64,
         }}
       >
         {showSider && (
@@ -157,7 +158,7 @@ const PageLayout = () => {
             style={{
               position: 'fixed',
               left: 0,
-              top: '64px',
+              top: 64,
               zIndex: 99,
               border: 'none',
               paddingRight: '0',
@@ -186,13 +187,23 @@ const PageLayout = () => {
           <Content
             style={{
               flex: '1 0 auto',
-              overflowY: isMobile ? 'visible' : 'hidden',
+              overflowY: isMobile ? 'visible' : 'auto',
+              overflowX: 'hidden',
               WebkitOverflowScrolling: 'touch',
-              padding: shouldInnerPadding ? (isMobile ? '5px' : '24px') : '0',
+              padding: 0,
               position: 'relative',
             }}
           >
-            <App />
+            <div
+              className={
+                shouldInnerPadding
+                  ? 'mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6'
+                  : 'w-full'
+              }
+              style={{ minHeight: '100%' }}
+            >
+              <App />
+            </div>
           </Content>
           {!shouldHideFooter && (
             <Layout.Footer

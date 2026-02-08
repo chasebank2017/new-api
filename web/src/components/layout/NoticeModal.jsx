@@ -29,10 +29,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { API, showError, getRelativeTime } from '../../helpers';
 import { marked } from 'marked';
-import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
-} from '@douyinfe/semi-illustrations';
 import { StatusContext } from '../../context/Status';
 import { Bell, Megaphone } from 'lucide-react';
 
@@ -129,12 +125,7 @@ const NoticeModal = ({
       return (
         <div className='py-12'>
           <Empty
-            image={
-              <IllustrationNoContent style={{ width: 150, height: 150 }} />
-            }
-            darkModeImage={
-              <IllustrationNoContentDark style={{ width: 150, height: 150 }} />
-            }
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
             description={t('暂无公告')}
           />
         </div>
@@ -154,12 +145,7 @@ const NoticeModal = ({
       return (
         <div className='py-12'>
           <Empty
-            image={
-              <IllustrationNoContent style={{ width: 150, height: 150 }} />
-            }
-            darkModeImage={
-              <IllustrationNoContentDark style={{ width: 150, height: 150 }} />
-            }
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
             description={t('暂无系统公告')}
           />
         </div>

@@ -660,7 +660,7 @@ const LoginForm = () => {
                             href='/user-agreement'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='text-blue-600 hover:text-blue-800 mx-1'
+                            className='!text-semi-color-primary hover:!opacity-90 mx-1'
                           >
                             {t('用户协议')}
                           </a>
@@ -673,7 +673,7 @@ const LoginForm = () => {
                             href='/privacy-policy'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='text-blue-600 hover:text-blue-800 mx-1'
+                            className='!text-semi-color-primary hover:!opacity-90 mx-1'
                           >
                             {t('隐私政策')}
                           </a>
@@ -690,7 +690,7 @@ const LoginForm = () => {
                     {t('没有账户？')}{' '}
                     <Link
                       to='/register'
-                      className='text-blue-600 hover:text-blue-800 font-medium'
+                      className='!text-semi-color-primary hover:!opacity-90 font-medium'
                     >
                       {t('注册')}
                     </Link>
@@ -766,7 +766,7 @@ const LoginForm = () => {
                               href='/user-agreement'
                               target='_blank'
                               rel='noopener noreferrer'
-                              className='text-blue-600 hover:text-blue-800 mx-1'
+                              className='!text-semi-color-primary hover:!opacity-90 mx-1'
                             >
                               {t('用户协议')}
                             </a>
@@ -779,7 +779,7 @@ const LoginForm = () => {
                               href='/privacy-policy'
                               target='_blank'
                               rel='noopener noreferrer'
-                              className='text-blue-600 hover:text-blue-800 mx-1'
+                              className='!text-semi-color-primary hover:!opacity-90 mx-1'
                             >
                               {t('隐私政策')}
                             </a>
@@ -848,7 +848,7 @@ const LoginForm = () => {
                     {t('没有账户？')}{' '}
                     <Link
                       to='/register'
-                      className='text-blue-600 hover:text-blue-800 font-medium'
+                      className='!text-semi-color-primary hover:!opacity-90 font-medium'
                     >
                       {t('注册')}
                     </Link>

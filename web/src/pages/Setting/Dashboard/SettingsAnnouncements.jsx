@@ -32,10 +32,6 @@ import {
   TextArea,
   Tooltip,
 } from '@douyinfe/semi-ui';
-import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
 import { Plus, Edit, Trash2, Save, Bell, Maximize2 } from 'lucide-react';
 import {
   API,
@@ -503,12 +499,7 @@ const SettingsAnnouncements = ({ options, refresh }) => {
           loading={loading}
           empty={
             <Empty
-              image={
-                <IllustrationNoResult style={{ width: 150, height: 150 }} />
-              }
-              darkModeImage={
-                <IllustrationNoResultDark style={{ width: 150, height: 150 }} />
-              }
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
               description={t('暂无系统公告')}
               style={{ padding: 30 }}
             />

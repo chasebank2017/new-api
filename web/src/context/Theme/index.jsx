@@ -1,21 +1,7 @@
-/*
-Copyright (C) 2025 QuantumNous
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
-*/
+/**
+ * 主题与官网 openclawapi.ai 一致：仅深色/浅色，共用 localStorage key "theme"，
+ * 与前端保持同步，无“跟随系统”选项。
+ */
 
 import {
   createContext,
@@ -24,6 +10,8 @@ import {
   useState,
   useEffect,
 } from 'react';
+
+const STORAGE_KEY = 'theme';
 
 const ThemeContext = createContext(null);
 export const useTheme = () => useContext(ThemeContext);
@@ -34,79 +22,49 @@ export const useActualTheme = () => useContext(ActualThemeContext);
 const SetThemeContext = createContext(null);
 export const useSetTheme = () => useContext(SetThemeContext);
 
-// 检测系统主题偏好
-const getSystemTheme = () => {
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-  }
-  return 'light';
-};
-
 export const ThemeProvider = ({ children }) => {
   const [theme, _setTheme] = useState(() => {
     try {
-      return localStorage.getItem('theme-mode') || 'auto';
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'dark' || stored === 'light') return stored;
+      return 'dark';
     } catch {
-      return 'auto';
+      return 'dark';
     }
   });
 
-  const [systemTheme, setSystemTheme] = useState(getSystemTheme());
-
-  // 计算实际应用的主题
-  const actualTheme = theme === 'auto' ? systemTheme : theme;
-
-  // 监听系统主题变化
+  // 应用主题到 DOM（与前端一致：html 使用 .light class，body 保留 theme-mode 供 Semi 使用）
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-      const handleSystemThemeChange = (e) => {
-        setSystemTheme(e.matches ? 'dark' : 'light');
-      };
-
-      mediaQuery.addEventListener('change', handleSystemThemeChange);
-
-      return () => {
-        mediaQuery.removeEventListener('change', handleSystemThemeChange);
-      };
-    }
-  }, []);
-
-  // 应用主题到DOM
-  useEffect(() => {
+    const root = document.documentElement;
     const body = document.body;
-    if (actualTheme === 'dark') {
-      body.setAttribute('theme-mode', 'dark');
-      document.documentElement.classList.add('dark');
-    } else {
+    if (theme === 'light') {
+      root.classList.add('light');
       body.removeAttribute('theme-mode');
-      document.documentElement.classList.remove('dark');
+    } else {
+      root.classList.remove('light');
+      body.setAttribute('theme-mode', 'dark');
     }
-  }, [actualTheme]);
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (e) {
+      // ignore
+    }
+  }, [theme]);
 
   const setTheme = useCallback((newTheme) => {
-    let themeValue;
-
-    if (typeof newTheme === 'boolean') {
-      // 向后兼容原有的 boolean 参数
-      themeValue = newTheme ? 'dark' : 'light';
-    } else if (typeof newTheme === 'string') {
-      // 新的字符串参数支持 'light', 'dark', 'auto'
-      themeValue = newTheme;
-    } else {
-      themeValue = 'auto';
+    const value =
+      newTheme === 'light' || newTheme === 'dark' ? newTheme : theme === 'dark' ? 'light' : 'dark';
+    _setTheme(value);
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (e) {
+      // ignore
     }
-
-    _setTheme(themeValue);
-    localStorage.setItem('theme-mode', themeValue);
-  }, []);
+  }, [theme]);
 
   return (
     <SetThemeContext.Provider value={setTheme}>
-      <ActualThemeContext.Provider value={actualTheme}>
+      <ActualThemeContext.Provider value={theme}>
         <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
       </ActualThemeContext.Provider>
     </SetThemeContext.Provider>

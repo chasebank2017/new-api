@@ -6,6 +6,8 @@ COPY web/bun.lock .
 RUN bun install
 COPY ./web .
 COPY ./VERSION .
+# 限制前端构建内存，避免 Docker 内存不足 (cannot allocate memory)
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN DISABLE_ESLINT_PLUGIN='true' VITE_REACT_APP_VERSION=$(cat VERSION) bun run build
 
 FROM golang:alpine AS builder2

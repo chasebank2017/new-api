@@ -202,7 +202,7 @@ const PasswordResetConfirm = () => {
                   <Text>
                     <Link
                       to='/login'
-                      className='text-blue-600 hover:text-blue-800 font-medium'
+                      className='!text-semi-color-primary hover:!opacity-90 font-medium'
                     >
                       {t('返回登录')}
                     </Link>

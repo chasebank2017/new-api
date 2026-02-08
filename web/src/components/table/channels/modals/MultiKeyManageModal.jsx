@@ -38,10 +38,6 @@ import {
   Card,
 } from '@douyinfe/semi-ui';
 import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
-import {
   API,
   showError,
   showSuccess,
@@ -715,16 +711,7 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
                 scroll={{ x: 'max-content' }}
                 empty={
                   <Empty
-                    image={
-                      <IllustrationNoResult
-                        style={{ width: 140, height: 140 }}
-                      />
-                    }
-                    darkModeImage={
-                      <IllustrationNoResultDark
-                        style={{ width: 140, height: 140 }}
-                      />
-                    }
+                    image={Empty.PRESENTED_IMAGE_SIMPLE}
                     title={t('暂无密钥数据')}
                     description={t('请检查渠道配置或刷新重试')}
                     style={{ padding: 30 }}

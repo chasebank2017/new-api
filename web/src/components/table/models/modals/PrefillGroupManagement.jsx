@@ -32,10 +32,6 @@ import {
 } from '@douyinfe/semi-ui';
 import { IconPlus, IconLayers } from '@douyinfe/semi-icons';
 import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
-import {
   API,
   showError,
   showSuccess,
@@ -277,14 +273,7 @@ const PrefillGroupManagement = ({ visible, onClose }) => {
                 />
               ) : (
                 <Empty
-                  image={
-                    <IllustrationNoResult style={{ width: 150, height: 150 }} />
-                  }
-                  darkModeImage={
-                    <IllustrationNoResultDark
-                      style={{ width: 150, height: 150 }}
-                    />
-                  }
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
                   description={t('暂无预填组')}
                   style={{ padding: 30 }}
                 />

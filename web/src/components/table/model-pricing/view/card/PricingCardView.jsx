@@ -31,10 +31,6 @@ import {
 import { IconHelpCircle } from '@douyinfe/semi-icons';
 import { Copy } from 'lucide-react';
 import {
-  IllustrationNoResult,
-  IllustrationNoResultDark,
-} from '@douyinfe/semi-illustrations';
-import {
   stringToColor,
   calculateModelPrice,
   formatPriceInfo,
@@ -222,10 +218,7 @@ const PricingCardView = ({
     return (
       <div className='flex justify-center items-center py-20'>
         <Empty
-          image={<IllustrationNoResult style={{ width: 150, height: 150 }} />}
-          darkModeImage={
-            <IllustrationNoResultDark style={{ width: 150, height: 150 }} />
-          }
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
           description={t('搜索无结果')}
         />
       </div>
@@ -261,7 +254,7 @@ const PricingCardView = ({
                   <div className='flex items-start space-x-3 flex-1 min-w-0'>
                     {getModelIcon(model)}
                     <div className='flex-1 min-w-0'>
-                      <h3 className='text-lg font-bold text-gray-900 truncate'>
+                      <h3 className='text-lg font-bold !text-semi-color-text-0 truncate'>
                         {model.model_name}
                       </h3>
                       <div className='flex items-center gap-3 text-xs mt-1'>

@@ -58,11 +58,8 @@ const UserInfoHeader = ({ t, userState }) => {
         <div
           className='relative h-32'
           style={{
-            '--palette-primary-darkerChannel': '0 75 80',
-            backgroundImage: `linear-gradient(0deg, rgba(var(--palette-primary-darkerChannel) / 80%), rgba(var(--palette-primary-darkerChannel) / 80%)), url('/cover-4.webp')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
+            backgroundColor: 'var(--semi-color-bg-1)',
+            borderBottom: '1px solid var(--semi-color-border)',
           }}
         >
           {/* 用户信息内容 */}
@@ -75,7 +72,7 @@ const UserInfoHeader = ({ t, userState }) => {
                 <div className='flex-1 min-w-0 flex flex-col justify-between'>
                   <div
                     className='text-3xl font-bold truncate'
-                    style={{ color: 'white' }}
+                    style={{ color: 'var(--semi-color-text-0)' }}
                   >
                     {getUsername()}
                   </div>
