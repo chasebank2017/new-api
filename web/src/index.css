@@ -1035,3 +1035,56 @@ html.dark .with-pastel-balls::before {
 .semi-tabs-bar .semi-tabs-tab-active .semi-tabs-tab-button {
   color: var(--oc-brand) !important;
 }
+
+/* ==================== 侧边栏 Navigation 选中项：红色（与官网一致）==================== */
+.semi-navigation-item-selected,
+.semi-navigation-item-selected:hover,
+.semi-navigation-item-selected .semi-navigation-item-text,
+.semi-navigation-item-selected .semi-navigation-item-icon,
+.sidebar-nav-item-selected,
+.sidebar-nav-item-selected:hover {
+  color: var(--oc-brand) !important;
+}
+
+.semi-navigation-item-selected .semi-icon,
+.semi-navigation-item-selected svg,
+.sidebar-nav-item-selected .semi-icon,
+.sidebar-nav-item-selected svg {
+  color: var(--oc-brand) !important;
+}
+
+/* Navigation 悬停：红色 */
+.semi-navigation-item:hover,
+.semi-navigation-item:hover .semi-navigation-item-text {
+  color: var(--oc-brand) !important;
+}
+
+/* ==================== Tag 红色背景 + 白色文字（与官网一致）==================== */
+.semi-tag-red,
+.semi-tag-danger,
+.semi-tag[style*="background"][style*="red"],
+.semi-tag[style*="background-color: rgb(255"],
+.semi-tag[style*="background-color: rgba(255, 77"],
+.semi-tag[style*="background-color: #ff"] {
+  color: #ffffff !important;
+}
+
+/* Tag light 系列（红色浅底）：文字红色 */
+.semi-tag-light.semi-tag-red,
+.semi-tag-light.semi-tag-danger {
+  color: var(--oc-brand) !important;
+  background-color: rgba(255, 77, 77, 0.12) !important;
+}
+
+/* Tag solid 系列（红色实底）：文字白色 */
+.semi-tag-solid,
+.semi-tag:not(.semi-tag-light):not(.channel-affinity-tag) {
+  color: #ffffff !important;
+}
+
+/* 确保品牌主色 Tag 内容可读（白色文字） */
+.semi-tag[style*="#ff4d4d"],
+.semi-tag[style*="rgb(255, 77, 77)"],
+.semi-tag[style*="rgba(255, 77, 77, 1)"] {
+  color: #ffffff !important;
+}

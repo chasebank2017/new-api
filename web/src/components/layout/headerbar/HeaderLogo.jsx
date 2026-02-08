@@ -35,7 +35,7 @@ const renderBrandName = (name) => {
   return (
     <span>
       {before}
-      <span className='!text-semi-color-primary'>Claw</span>
+      <span style={{ color: 'var(--oc-brand)' }}>Claw</span>
       {after}
     </span>
   );

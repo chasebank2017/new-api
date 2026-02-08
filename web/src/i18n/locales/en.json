@@ -2848,6 +2848,25 @@
     "填写服务器地址后自动生成：": "Auto-generated after entering server address: ",
     "自动生成：": "Auto-generated: ",
     "请先填写服务器地址，以自动生成完整的端点 URL": "Please enter the server address first to auto-generate full endpoint URLs",
-    "端点 URL 必须是完整地址（以 http:// 或 https:// 开头）": "Endpoint URL must be a full address (starting with http:// or https://)"
+    "端点 URL 必须是完整地址（以 http:// 或 https:// 开头）": "Endpoint URL must be a full address (starting with http:// or https://)",
+    "footer": {
+      "brand_desc": "OpenClaw officially adapted API, one endpoint, all models. Enterprise AI model aggregation gateway. Access 300+ models via a single unified API.",
+      "product": "Product",
+      "support": "Support",
+      "resource": "Resources",
+      "legal": "Legal",
+      "models": "Models List",
+      "pricing": "Pricing Plans",
+      "docs": "Documentation",
+      "console": "Console",
+      "faq": "FAQ",
+      "contact": "Contact Us",
+      "status": "System Status",
+      "about": "About Us",
+      "blog": "Blog",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "copyright": "All rights reserved."
+    }
   }
 }

@@ -138,6 +138,7 @@ const PageLayout = () => {
           display: 'flex',
           flexDirection: 'column',
           marginTop: 64,
+          flex: 1,
         }}
       >
         {showSider && (
@@ -147,6 +148,7 @@ const PageLayout = () => {
               position: 'fixed',
               left: 0,
               top: 64,
+              bottom: 0,
               zIndex: 99,
               border: 'none',
               paddingRight: '0',
@@ -170,6 +172,7 @@ const PageLayout = () => {
             flex: '1 1 auto',
             display: 'flex',
             flexDirection: 'column',
+            minHeight: 'calc(100vh - 64px)',
           }}
         >
           <Content
@@ -193,16 +196,18 @@ const PageLayout = () => {
               <App />
             </div>
           </Content>
-          <Layout.Footer
-            style={{
-              flex: '0 0 auto',
-              width: '100%',
-            }}
-          >
-            <FooterBar />
-          </Layout.Footer>
         </Layout>
       </Layout>
+      {/* Footer 放在最外层，100% 宽度贯通 */}
+      <Layout.Footer
+        style={{
+          flex: '0 0 auto',
+          width: '100%',
+          zIndex: 101, // Ensure it's above fixed Sider for full-width look
+        }}
+      >
+        <FooterBar />
+      </Layout.Footer>
       <ToastContainer />
     </Layout>
   );
