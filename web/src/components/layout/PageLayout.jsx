@@ -48,19 +48,7 @@ const PageLayout = () => {
   const { i18n } = useTranslation();
   const location = useLocation();
 
-  const cardProPages = [
-    '/console/channel',
-    '/console/log',
-    '/console/redemption',
-    '/console/user',
-    '/console/token',
-    '/console/midjourney',
-    '/console/task',
-    '/console/models',
-    '/pricing',
-  ];
-
-  const shouldHideFooter = cardProPages.includes(location.pathname);
+  // 已移除 cardProPages/shouldHideFooter - 所有页面统一显示页脚
 
   const shouldInnerPadding =
     location.pathname.includes('/console') &&
@@ -113,7 +101,7 @@ const PageLayout = () => {
         linkElement.href = logo;
       }
     }
-    const savedLang = localStorage.getItem('i18nextLng');
+    const savedLang = localStorage.getItem('locale');
     if (savedLang) {
       i18n.changeLanguage(savedLang);
     }
@@ -205,16 +193,14 @@ const PageLayout = () => {
               <App />
             </div>
           </Content>
-          {!shouldHideFooter && (
-            <Layout.Footer
-              style={{
-                flex: '0 0 auto',
-                width: '100%',
-              }}
-            >
-              <FooterBar />
-            </Layout.Footer>
-          )}
+          <Layout.Footer
+            style={{
+              flex: '0 0 auto',
+              width: '100%',
+            }}
+          >
+            <FooterBar />
+          </Layout.Footer>
         </Layout>
       </Layout>
       <ToastContainer />

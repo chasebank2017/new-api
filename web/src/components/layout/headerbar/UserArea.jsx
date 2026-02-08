@@ -20,13 +20,7 @@ For commercial licensing, please contact support@quantumnous.com
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, Button, Dropdown, Typography } from '@douyinfe/semi-ui';
-import { ChevronDown } from 'lucide-react';
-import {
-  IconExit,
-  IconUserSetting,
-  IconCreditCard,
-  IconKey,
-} from '@douyinfe/semi-icons';
+import { ChevronDown, LogOut, Settings, CreditCard, KeyRound } from 'lucide-react';
 import { stringToColor } from '../../../helpers';
 import SkeletonWrapper from '../components/SkeletonWrapper';
 
@@ -66,8 +60,8 @@ const UserArea = ({
                 className='!px-3 !py-1.5 !text-sm !text-semi-color-text-0 hover:!bg-semi-color-fill-1 dark:!text-gray-200 dark:hover:!bg-blue-500 dark:hover:!text-white'
               >
                 <div className='flex items-center gap-2'>
-                  <IconUserSetting
-                    size='small'
+                  <Settings
+                    size={16}
                     className='text-gray-500 dark:text-gray-400'
                   />
                   <span>{t('个人设置')}</span>
@@ -80,8 +74,8 @@ const UserArea = ({
                 className='!px-3 !py-1.5 !text-sm !text-semi-color-text-0 hover:!bg-semi-color-fill-1 dark:!text-gray-200 dark:hover:!bg-blue-500 dark:hover:!text-white'
               >
                 <div className='flex items-center gap-2'>
-                  <IconKey
-                    size='small'
+                  <KeyRound
+                    size={16}
                     className='text-gray-500 dark:text-gray-400'
                   />
                   <span>{t('令牌管理')}</span>
@@ -94,8 +88,8 @@ const UserArea = ({
                 className='!px-3 !py-1.5 !text-sm !text-semi-color-text-0 hover:!bg-semi-color-fill-1 dark:!text-gray-200 dark:hover:!bg-blue-500 dark:hover:!text-white'
               >
                 <div className='flex items-center gap-2'>
-                  <IconCreditCard
-                    size='small'
+                  <CreditCard
+                    size={16}
                     className='text-gray-500 dark:text-gray-400'
                   />
                   <span>{t('钱包管理')}</span>
@@ -106,8 +100,8 @@ const UserArea = ({
                 className='!px-3 !py-1.5 !text-sm !text-semi-color-text-0 hover:!bg-semi-color-fill-1 dark:!text-gray-200 dark:hover:!bg-red-500 dark:hover:!text-white'
               >
                 <div className='flex items-center gap-2'>
-                  <IconExit
-                    size='small'
+                  <LogOut
+                    size={16}
                     className='text-gray-500 dark:text-gray-400'
                   />
                   <span>{t('退出')}</span>
