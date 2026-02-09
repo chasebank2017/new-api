@@ -23,7 +23,7 @@ import SiderBar from './SiderBar';
 import App from '../../App';
 import FooterBar from './Footer';
 import { ToastContainer } from 'react-toastify';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useIsMobile } from '../../hooks/common/useIsMobile';
 import { useSidebarCollapsed } from '../../hooks/common/useSidebarCollapsed';
 import { useTranslation } from 'react-i18next';
@@ -33,6 +33,8 @@ import {
   getSystemName,
   showError,
   setStatusData,
+  getCookie,
+  setCookie,
 } from '../../helpers';
 import { UserContext } from '../../context/User';
 import { StatusContext } from '../../context/Status';
@@ -45,6 +47,7 @@ const PageLayout = () => {
   const isMobile = useIsMobile();
   const [collapsed, , setCollapsed] = useSidebarCollapsed();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const contentWrapperRef = useRef(null);
   const { i18n } = useTranslation();
   const location = useLocation();
 
@@ -101,9 +104,16 @@ const PageLayout = () => {
         linkElement.href = logo;
       }
     }
-    const savedLang = localStorage.getItem('locale');
-    if (savedLang) {
+    // 与前端同步：优先读 cookie（domain=.openclawapi.ai），再 localStorage
+    const cookieLocale = getCookie('oc_locale');
+    const savedLang = cookieLocale || localStorage.getItem('locale');
+    if (savedLang && (savedLang === 'en' || savedLang === 'zh')) {
       i18n.changeLanguage(savedLang);
+      try {
+        localStorage.setItem('locale', savedLang);
+      } catch (e) {
+        // ignore
+      }
     }
   }, [i18n]);
 
@@ -186,6 +196,7 @@ const PageLayout = () => {
             }}
           >
             <div
+              ref={contentWrapperRef}
               className={
                 shouldInnerPadding
                   ? 'mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6'
@@ -194,7 +205,7 @@ const PageLayout = () => {
               style={{ minHeight: '100%' }}
             >
               <App />
-              <FooterBar />
+              <FooterBar scrollRootRef={contentWrapperRef} />
             </div>
           </Content>
         </Layout>

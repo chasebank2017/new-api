@@ -21,7 +21,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Card, Select, Typography, Avatar } from '@douyinfe/semi-ui';
 import { Languages } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { API, showSuccess, showError } from '../../../../helpers';
+import { API, showSuccess, showError, setCookie } from '../../../../helpers';
 import { UserContext } from '../../../../context/User';
 
 // Language options with native names and flags
@@ -68,6 +68,12 @@ const PreferencesSettings = ({ t }) => {
       // Update language immediately for responsive UX
       setCurrentLanguage(lang);
       i18n.changeLanguage(lang);
+      try {
+        localStorage.setItem('locale', lang);
+        setCookie('oc_locale', lang);
+      } catch (e) {
+        // ignore
+      }
 
       // Save to backend
       const res = await API.put('/api/user/self', {

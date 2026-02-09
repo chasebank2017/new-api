@@ -1,6 +1,6 @@
 /**
  * 主题与官网 openclawapi.ai 一致：仅深色/浅色，共用 localStorage key "theme"，
- * 与前端保持同步，无“跟随系统”选项。
+ * 与前端通过 cookie oc_theme (domain=.openclawapi.ai) 同步。
  */
 
 import {
@@ -10,6 +10,7 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { getCookie, setCookie } from '../../helpers/cookie';
 
 const STORAGE_KEY = 'theme';
 
@@ -25,6 +26,8 @@ export const useSetTheme = () => useContext(SetThemeContext);
 export const ThemeProvider = ({ children }) => {
   const [theme, _setTheme] = useState(() => {
     try {
+      const fromCookie = getCookie('oc_theme');
+      if (fromCookie === 'dark' || fromCookie === 'light') return fromCookie;
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === 'dark' || stored === 'light') return stored;
       return 'dark';
@@ -46,6 +49,7 @@ export const ThemeProvider = ({ children }) => {
     }
     try {
       localStorage.setItem(STORAGE_KEY, theme);
+      setCookie('oc_theme', theme);
     } catch (e) {
       // ignore
     }
@@ -57,6 +61,7 @@ export const ThemeProvider = ({ children }) => {
     _setTheme(value);
     try {
       localStorage.setItem(STORAGE_KEY, value);
+      setCookie('oc_theme', value);
     } catch (e) {
       // ignore
     }
