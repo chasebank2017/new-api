@@ -256,7 +256,6 @@ const TopUp = () => {
         showError(res);
       }
     } catch (err) {
-      console.log(err);
       showError(t('支付请求失败'));
     } finally {
       setOpen(false);
@@ -302,7 +301,6 @@ const TopUp = () => {
         showError(res);
       }
     } catch (err) {
-      console.log(err);
       showError(t('支付请求失败'));
     } finally {
       setCreemOpen(false);
@@ -458,8 +456,6 @@ const TopUp = () => {
 
           // 设置 Creem 产品
           try {
-            console.log(' data is ?', data);
-            console.log(' creem products is ?', data.creem_products);
             const products = JSON.parse(data.creem_products || '[]');
             setCreemProducts(products);
           } catch (e) {
@@ -474,7 +470,6 @@ const TopUp = () => {
           // 初始化显示实付金额
           getAmount(minTopUpValue);
         } catch (e) {
-          console.log('解析支付方式失败:', e);
           setPayMethods([]);
         }
 
@@ -487,10 +482,8 @@ const TopUp = () => {
           setPresetAmounts(customPresets);
         }
       } else {
-        console.error('获取充值配置失败:', data);
       }
     } catch (error) {
-      console.error('获取充值配置异常:', error);
     }
   };
 
@@ -587,7 +580,6 @@ const TopUp = () => {
         showError(res);
       }
     } catch (err) {
-      console.log(err);
     }
     setAmountLoading(false);
   };
@@ -613,7 +605,6 @@ const TopUp = () => {
         showError(res);
       }
     } catch (err) {
-      console.log(err);
     } finally {
       setAmountLoading(false);
     }

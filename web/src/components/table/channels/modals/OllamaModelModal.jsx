@@ -410,7 +410,6 @@ const OllamaModelModal = ({
                   return;
                 }
               } catch (e) {
-                console.error('Failed to parse SSE data:', e);
               }
             }
           }
@@ -426,7 +425,6 @@ const OllamaModelModal = ({
             setEventSource(null);
             return;
           }
-          console.error('Stream processing error:', error);
           showError(t('数据传输中断'));
           setPullProgress(null);
           setPullLoading(false);

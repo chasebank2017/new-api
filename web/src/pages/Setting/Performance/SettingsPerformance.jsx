@@ -123,7 +123,6 @@ export default function SettingsPerformance(props) {
         setStats(res.data.data);
       }
     } catch (error) {
-      console.error('Failed to fetch performance stats:', error);
     } finally {
       setStatsLoading(false);
     }
@@ -192,10 +191,10 @@ export default function SettingsPerformance(props) {
   const diskCacheUsagePercent =
     stats?.cache_stats?.disk_cache_max_bytes > 0
       ? (
-          (stats.cache_stats.current_disk_usage_bytes /
-            stats.cache_stats.disk_cache_max_bytes) *
-          100
-        ).toFixed(1)
+        (stats.cache_stats.current_disk_usage_bytes /
+          stats.cache_stats.disk_cache_max_bytes) *
+        100
+      ).toFixed(1)
       : 0;
 
   return (
@@ -248,9 +247,9 @@ export default function SettingsPerformance(props) {
                   extraText={
                     stats?.disk_space_info?.total > 0
                       ? t('可用空间: {{free}} / 总空间: {{total}}', {
-                          free: formatBytes(stats.disk_space_info.free),
-                          total: formatBytes(stats.disk_space_info.total),
-                        })
+                        free: formatBytes(stats.disk_space_info.free),
+                        total: formatBytes(stats.disk_space_info.total),
+                      })
                       : t('磁盘缓存占用的最大空间')
                   }
                   min={100}
@@ -523,14 +522,14 @@ export default function SettingsPerformance(props) {
                       </div>
                       {stats.disk_space_info.free <
                         inputs['performance_setting.disk_cache_max_size_mb'] *
-                          1024 *
-                          1024 && (
-                        <Banner
-                          type='warning'
-                          description={t('磁盘可用空间小于缓存最大总量设置')}
-                          style={{ marginTop: 8 }}
-                        />
-                      )}
+                        1024 *
+                        1024 && (
+                          <Banner
+                            type='warning'
+                            description={t('磁盘可用空间小于缓存最大总量设置')}
+                            style={{ marginTop: 8 }}
+                          />
+                        )}
                     </div>
                   </Col>
                 </Row>

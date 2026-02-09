@@ -71,7 +71,6 @@ export async function copy(text) {
       window.document.body.removeChild(textarea);
     } catch (e) {
       okay = false;
-      console.error(e);
     }
   }
   return okay;
@@ -103,7 +102,6 @@ if (isMobileScreen) {
 }
 
 export function showError(error) {
-  console.error(error);
   if (error.message) {
     if (error.name === 'AxiosError') {
       switch (error.response.status) {

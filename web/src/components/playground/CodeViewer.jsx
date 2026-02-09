@@ -238,7 +238,6 @@ const CodeViewer = ({ content, title, language = 'json' }) => {
       }
     } catch (err) {
       Toast.error(t('复制失败'));
-      console.error('Copy failed:', err);
     }
   }, [content, t]);
 

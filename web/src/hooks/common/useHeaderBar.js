@@ -53,7 +53,6 @@ export const useHeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
 
         return modules;
       } catch (error) {
-        console.error('解析顶栏模块配置失败:', error);
         return null;
       }
     }
@@ -164,7 +163,6 @@ export const useHeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
           }
         } catch (error) {
           // Silently ignore errors - language was already changed locally
-          console.error('Failed to save language preference:', error);
         }
       }
     },

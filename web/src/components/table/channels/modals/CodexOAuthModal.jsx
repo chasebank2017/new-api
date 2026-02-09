@@ -46,12 +46,10 @@ const CodexOAuthModal = ({ visible, onCancel, onSuccess }) => {
         { skipErrorHandler: true },
       );
       if (!res?.data?.success) {
-        console.error('Codex OAuth start failed:', res?.data?.message);
         throw new Error(t('启动授权失败'));
       }
       const url = res?.data?.data?.authorize_url || '';
       if (!url) {
-        console.error(
           'Codex OAuth start response missing authorize_url:',
           res?.data,
         );
@@ -81,13 +79,11 @@ const CodexOAuthModal = ({ visible, onCancel, onSuccess }) => {
         { skipErrorHandler: true },
       );
       if (!res?.data?.success) {
-        console.error('Codex OAuth complete failed:', res?.data?.message);
         throw new Error(t('授权失败'));
       }
 
       const key = res?.data?.data?.key || '';
       if (!key) {
-        console.error('Codex OAuth complete response missing key:', res?.data);
         throw new Error(t('响应缺少凭据'));
       }
 

@@ -33,7 +33,6 @@ export async function fetchTokenKeys() {
     const activeTokens = tokenItems.filter((token) => token.status === 1);
     return activeTokens.map((token) => token.key);
   } catch (error) {
-    console.error('Error fetching token keys:', error);
     return [];
   }
 }
@@ -51,7 +50,6 @@ export function getServerAddress() {
       status = JSON.parse(status);
       serverAddress = status.server_address || '';
     } catch (error) {
-      console.error('Failed to parse status from localStorage:', error);
     }
   }
 

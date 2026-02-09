@@ -129,7 +129,6 @@ const Home = () => {
             setNoticeVisible(true);
           }
         } catch (error) {
-          console.error('获取公告失败:', error);
         }
       }
     };

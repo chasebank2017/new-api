@@ -78,7 +78,6 @@ const DashboardSetting = () => {
       await getOptions();
     } catch (error) {
       showError('刷新失败');
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -114,7 +113,6 @@ const DashboardSetting = () => {
       await onRefresh();
       setShowMigrateModal(false);
     } catch (err) {
-      console.error(err);
       showError('迁移失败: ' + (err.message || '未知错误'));
     } finally {
       setLoading(false);

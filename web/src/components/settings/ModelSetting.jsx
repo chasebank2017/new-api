@@ -72,7 +72,6 @@ const ModelSetting = () => {
               item.value = JSON.stringify(JSON.parse(item.value), null, 2);
             } catch (e) {
               // Keep raw value so user can fix it, and avoid crashing the page.
-              console.error(`Invalid JSON for option ${item.key}:`, e);
             }
           }
         }
@@ -96,7 +95,6 @@ const ModelSetting = () => {
       // showSuccess('刷新成功');
     } catch (error) {
       showError('刷新失败');
-      console.error(error);
     } finally {
       setLoading(false);
     }

@@ -48,7 +48,6 @@ const parseChannelKeys = (keyData, t) => {
       }
     } catch (e) {
       // 如果解析失败，按普通文本处理
-      console.warn('Failed to parse JSON keys:', e);
     }
   }
 

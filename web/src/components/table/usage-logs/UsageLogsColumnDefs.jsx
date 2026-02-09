@@ -399,7 +399,6 @@ export const getLogsColumns = ({
             try {
               other = JSON.parse(record.other);
             } catch (e) {
-              console.error(
                 `Failed to parse record.other: "${record.other}".`,
                 e,
               );

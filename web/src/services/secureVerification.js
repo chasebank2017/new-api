@@ -42,12 +42,7 @@ export class SecureVerificationService {
           isPasskeySupported(),
         ]);
 
-      // console.log('=== DEBUGGING VERIFICATION METHODS ===');
-      // console.log('2FA Response:', JSON.stringify(twoFAResponse, null, 2));
-      // console.log(
-      //   'Passkey Response:',
-      //   JSON.stringify(passkeyResponse, null, 2),
-      // );
+
 
       const has2FA =
         twoFAResponse.data?.success &&
@@ -56,19 +51,7 @@ export class SecureVerificationService {
         passkeyResponse.data?.success &&
         passkeyResponse.data?.data?.enabled === true;
 
-      console.log('has2FA calculation:', {
-        success: twoFAResponse.data?.success,
-        dataExists: !!twoFAResponse.data?.data,
-        enabled: twoFAResponse.data?.data?.enabled,
-        result: has2FA,
-      });
 
-      console.log('hasPasskey calculation:', {
-        success: passkeyResponse.data?.success,
-        dataExists: !!passkeyResponse.data?.data,
-        enabled: passkeyResponse.data?.data?.enabled,
-        result: hasPasskey,
-      });
 
       const result = {
         has2FA,
@@ -78,7 +61,7 @@ export class SecureVerificationService {
 
       return result;
     } catch (error) {
-      console.error('Failed to check verification methods:', error);
+
       return {
         has2FA: false,
         hasPasskey: false,
@@ -206,27 +189,27 @@ export const createApiCalls = {
    */
   custom:
     (url, method = 'POST', extraData = {}) =>
-    async () => {
-      // 新系统中，验证已通过中间件处理
-      const data = extraData;
+      async () => {
+        // 新系统中，验证已通过中间件处理
+        const data = extraData;
 
-      let response;
-      switch (method.toUpperCase()) {
-        case 'GET':
-          response = await API.get(url, { params: data });
-          break;
-        case 'POST':
-          response = await API.post(url, data);
-          break;
-        case 'PUT':
-          response = await API.put(url, data);
-          break;
-        case 'DELETE':
-          response = await API.delete(url, { data });
-          break;
-        default:
-          throw new Error(`不支持的HTTP方法: ${method}`);
-      }
-      return response.data;
-    },
+        let response;
+        switch (method.toUpperCase()) {
+          case 'GET':
+            response = await API.get(url, { params: data });
+            break;
+          case 'POST':
+            response = await API.post(url, data);
+            break;
+          case 'PUT':
+            response = await API.put(url, data);
+            break;
+          case 'DELETE':
+            response = await API.delete(url, { data });
+            break;
+          default:
+            throw new Error(`不支持的HTTP方法: ${method}`);
+        }
+        return response.data;
+      },
 };

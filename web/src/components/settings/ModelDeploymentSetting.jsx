@@ -61,7 +61,6 @@ const ModelDeploymentSetting = () => {
       await getOptions();
     } catch (error) {
       showError('刷新失败');
-      console.error(error);
     } finally {
       setLoading(false);
     }

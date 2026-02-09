@@ -27,7 +27,6 @@ export function getLogOther(otherStr) {
   try {
     return JSON.parse(otherStr);
   } catch (e) {
-    console.error(`Failed to parse record.other: "${otherStr}".`, e);
     return null;
   }
 }

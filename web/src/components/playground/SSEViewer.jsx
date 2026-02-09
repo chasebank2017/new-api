@@ -112,7 +112,6 @@ const SSEViewer = ({ sseData }) => {
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       Toast.error(t('复制失败'));
-      console.error('Copy failed:', err);
     }
   }, [parsedSSEData, t]);
 

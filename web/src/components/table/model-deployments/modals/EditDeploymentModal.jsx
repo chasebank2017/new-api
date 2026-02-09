@@ -97,7 +97,6 @@ const EditDeploymentModal = ({
         setModels(modelOptions);
       }
     } catch (error) {
-      console.error('Failed to load models:', error);
       showError(t('加载模型列表失败'));
     }
     setLoadingModels(false);
@@ -128,7 +127,6 @@ const EditDeploymentModal = ({
         showError(res.data.message || t('更新失败'));
       }
     } catch (error) {
-      console.error('Submit error:', error);
       showError(t('更新失败，请检查输入信息'));
     }
     setLoading(false);

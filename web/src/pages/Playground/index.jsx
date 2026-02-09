@@ -192,7 +192,6 @@ const Playground = () => {
         try {
           return JSON.parse(customRequestBody);
         } catch (parseError) {
-          console.warn('自定义请求体JSON解析失败，回退到默认预览:', parseError);
         }
       }
 
@@ -230,14 +229,12 @@ const Playground = () => {
 
       return buildApiPayload(messages, null, inputs, parameterEnabled);
     } catch (error) {
-      console.error('构造预览请求体失败:', error);
       return null;
     }
   }, [inputs, parameterEnabled, message, customRequestMode, customRequestBody]);
 
   // 发送消息
   function onMessageSend(content, attachment) {
-    console.log('attachment: ', attachment);
 
     // 创建用户消息和加载消息
     const userMessage = createMessage(MESSAGE_ROLES.USER, content);
@@ -261,7 +258,6 @@ const Playground = () => {
         });
         return;
       } catch (error) {
-        console.error('自定义请求体JSON解析失败:', error);
         Toast.error(ERROR_MESSAGES.JSON_PARSE_ERROR);
         return;
       }

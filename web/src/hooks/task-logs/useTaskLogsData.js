@@ -109,7 +109,6 @@ export const useTaskLogsData = () => {
         }
         setVisibleColumns(merged);
       } catch (e) {
-        console.error('Failed to parse saved column preferences', e);
         initDefaultColumns();
       }
     } else {
