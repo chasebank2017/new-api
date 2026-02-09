@@ -91,8 +91,7 @@ export default function ModelRatioSettings(props) {
               showSuccess(t('保存成功'));
               props.refresh();
             })
-            .catch((error) => {
-              console.error('Unexpected error:', error);
+            .catch(() => {
               showError(t('保存失败，请重试'));
             })
             .finally(() => {
@@ -104,7 +103,6 @@ export default function ModelRatioSettings(props) {
         });
     } catch (error) {
       showError(t('请检查输入'));
-      console.error(error);
     }
   }
 

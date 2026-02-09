@@ -43,7 +43,6 @@ export const useModelDeploymentSettings = () => {
         });
       }
     } catch (error) {
-      console.error('Failed to get model deployment settings:', error);
     } finally {
       setLoading(false);
     }

@@ -81,7 +81,6 @@ export default function GroupRatioSettings(props) {
               props.refresh();
             })
             .catch((error) => {
-              console.error('Unexpected error:', error);
               showError(t('保存失败，请重试'));
             })
             .finally(() => {
@@ -93,7 +92,6 @@ export default function GroupRatioSettings(props) {
         });
     } catch (error) {
       showError(t('请检查输入'));
-      console.error(error);
     }
   }
 

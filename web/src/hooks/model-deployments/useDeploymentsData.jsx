@@ -130,7 +130,6 @@ export const useDeploymentsData = () => {
         const parsed = JSON.parse(saved);
         return ensureRequiredColumns(parsed);
       } catch (e) {
-        console.error('Failed to parse saved column visibility:', e);
       }
     }
     return ensureRequiredColumns({
@@ -213,7 +212,6 @@ export const useDeploymentsData = () => {
       applyDeploymentsData({ data, page });
     } catch (error) {
       if (seq !== requestSeq.current) return;
-      console.error(error);
       showError(isSearchMode ? t('搜索失败') : t('获取部署列表失败'));
       setDeployments([]);
       setDeploymentCount(0);
@@ -290,7 +288,6 @@ export const useDeploymentsData = () => {
         showError(res.data.message);
       }
     } catch (error) {
-      console.error(error);
       showError(t('启动部署失败'));
     }
   };
@@ -305,7 +302,6 @@ export const useDeploymentsData = () => {
         showError(res.data.message);
       }
     } catch (error) {
-      console.error(error);
       showError(t('重启部署失败'));
     }
   };
@@ -320,7 +316,6 @@ export const useDeploymentsData = () => {
         showError(res.data.message);
       }
     } catch (error) {
-      console.error(error);
       showError(t('删除部署失败'));
     }
   };
@@ -405,7 +400,6 @@ export const useDeploymentsData = () => {
         showError(createResp.data?.message || t('同步渠道失败'));
       }
     } catch (error) {
-      console.error(error);
       showError(t('同步渠道失败'));
     }
   };
@@ -424,7 +418,6 @@ export const useDeploymentsData = () => {
         return false;
       }
     } catch (error) {
-      console.error(error);
       showError(t('更新部署名称失败'));
       return false;
     }
@@ -445,7 +438,6 @@ export const useDeploymentsData = () => {
         showError(res.data.message);
       }
     } catch (error) {
-      console.error(error);
       showError(t('批量删除失败'));
     }
   };

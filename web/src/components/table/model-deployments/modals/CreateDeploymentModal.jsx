@@ -493,7 +493,6 @@ const CreateDeploymentModal = ({ visible, onCancel, onSuccess, t }) => {
       }
     } catch (error) {
       if (replicaRequestIdRef.current === requestId) {
-        console.error('Load available replicas error:', error);
         setLocationTotalAvailable(null);
       }
     } finally {
@@ -529,7 +528,6 @@ const CreateDeploymentModal = ({ visible, onCancel, onSuccess, t }) => {
         setPriceEstimation(null);
       }
     } catch (error) {
-      console.error('Price calculation error:', error);
       setPriceEstimation(null);
     } finally {
       setLoadingPrice(false);

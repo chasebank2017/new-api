@@ -207,7 +207,6 @@ export const useDashboardData = (userState, userDispatch, statusState) => {
         showError(message);
       }
     } catch (err) {
-      console.error(err);
     } finally {
       setUptimeLoading(false);
     }

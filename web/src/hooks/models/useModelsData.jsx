@@ -153,7 +153,6 @@ export const useModelsData = () => {
         setModels([]);
       }
     } catch (error) {
-      console.error(error);
       showError(t('获取模型列表失败'));
       setModels([]);
     }
@@ -283,7 +282,6 @@ export const useModelsData = () => {
         setModels([]);
       }
     } catch (error) {
-      console.error(error);
       showError(t('搜索模型失败'));
       setModels([]);
     }
@@ -414,7 +412,6 @@ export const useModelsData = () => {
       await navigator.clipboard.writeText(text);
       showSuccess(t('复制成功'));
     } catch (error) {
-      console.error('Copy failed:', error);
       showError(t('复制失败'));
     }
   };

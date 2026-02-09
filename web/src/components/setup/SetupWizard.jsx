@@ -96,7 +96,6 @@ const SetupWizard = () => {
         showError(t('获取初始化状态失败'));
       }
     } catch (error) {
-      console.error('Failed to fetch setup status:', error);
       showError(t('获取初始化状态失败'));
     }
   };
@@ -165,7 +164,6 @@ const SetupWizard = () => {
 
   const onSubmit = () => {
     if (!formRef.current) {
-      console.error('Form reference is null');
       showError(t('表单引用错误，请刷新页面重试'));
       return;
     }
@@ -217,7 +215,6 @@ const SetupWizard = () => {
         }
       })
       .catch((error) => {
-        console.error('API error:', error);
         showError(t('系统初始化失败，请重试'));
         setLoading(false);
       })

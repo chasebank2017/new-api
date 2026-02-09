@@ -777,7 +777,6 @@ export function truncateText(text, maxWidth = 200) {
 
     return result;
   } catch (error) {
-    console.warn(
       'Text measurement failed, falling back to character count',
       error,
     );

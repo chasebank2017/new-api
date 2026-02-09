@@ -259,7 +259,6 @@ export const useApiRequest = (
           });
         }
       } catch (error) {
-        console.error('Non-stream request error:', error);
 
         const errorInfo = handleApiError(error);
         setDebugData((prev) => ({
@@ -359,7 +358,6 @@ export const useApiRequest = (
             }
           }
         } catch (error) {
-          console.error('Failed to parse SSE message:', error);
           const errorInfo = `解析错误: ${error.message}`;
 
           setDebugData((prev) => ({
@@ -378,7 +376,6 @@ export const useApiRequest = (
       source.addEventListener('error', (e) => {
         // 只有在流没有正常完成且连接状态异常时才处理错误
         if (!isStreamComplete && source.readyState !== 2) {
-          console.error('SSE Error:', e);
           const errorMessage = e.data || t('请求发生错误');
 
           const errorInfo = handleApiError(new Error(errorMessage));
@@ -430,7 +427,6 @@ export const useApiRequest = (
       try {
         source.stream();
       } catch (error) {
-        console.error('Failed to start SSE stream:', error);
         const errorInfo = handleApiError(error);
 
         setDebugData((prev) => ({

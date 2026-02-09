@@ -70,7 +70,6 @@ export default function ModelRatioNotSetEditor(props) {
         showError(message);
       }
     } catch (error) {
-      console.error(t('获取启用模型失败:'), error);
       showError(t('获取启用模型失败'));
     }
   };
@@ -107,7 +106,6 @@ export default function ModelRatioNotSetEditor(props) {
       // 清空选择
       setSelectedRowKeys([]);
     } catch (error) {
-      console.error(t('JSON解析错误:'), error);
     }
   }, [props.options, enabledModels]);
 
@@ -199,7 +197,6 @@ export default function ModelRatioNotSetEditor(props) {
       // 重新获取未设置的模型
       getAllEnabledModels();
     } catch (error) {
-      console.error(t('保存失败:'), error);
       showError(t('保存失败，请重试'));
     } finally {
       setLoading(false);
@@ -367,7 +364,6 @@ export default function ModelRatioNotSetEditor(props) {
   };
 
   const handleBatchTypeChange = (value) => {
-    console.log(t('Changing batch type to:'), value);
     setBatchFillType(value);
 
     // 切换类型时清空对应的值

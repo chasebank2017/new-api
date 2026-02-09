@@ -33,7 +33,6 @@ export const usePlayground = () => {
   if (!context) {
     return {
       onPasteImage: () => {
-        console.warn('PlaygroundContext not provided');
       },
       imageUrls: [],
       imageEnabled: false,

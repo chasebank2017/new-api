@@ -76,7 +76,6 @@ export default function SettingGrokModel(props) {
           });
       })
       .catch((error) => {
-        console.error('Validation failed:', error);
         showError(t('请检查输入'));
       });
   }

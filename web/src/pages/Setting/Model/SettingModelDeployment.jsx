@@ -90,7 +90,6 @@ export default function SettingModelDeployment(props) {
         showError(localizedMessage);
       }
     } catch (error) {
-      console.error('io.net API test error:', error);
 
       if (error?.code === 'ERR_NETWORK') {
         showError(t('网络连接失败，请检查网络设置或稍后重试'));

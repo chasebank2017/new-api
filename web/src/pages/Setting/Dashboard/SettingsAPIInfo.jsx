@@ -101,7 +101,6 @@ const SettingsAPIInfo = ({ options, refresh }) => {
       await updateOption('console_setting.api_info', apiInfoJson);
       setHasChanges(false);
     } catch (error) {
-      console.error('API信息更新失败', error);
       showError('API信息更新失败');
     } finally {
       setLoading(false);
@@ -194,7 +193,6 @@ const SettingsAPIInfo = ({ options, refresh }) => {
       const parsed = JSON.parse(apiInfoStr);
       setApiInfoList(Array.isArray(parsed) ? parsed : []);
     } catch (error) {
-      console.error('解析API信息失败:', error);
       setApiInfoList([]);
     }
   };
@@ -381,10 +379,8 @@ const SettingsAPIInfo = ({ options, refresh }) => {
       setSelectedRowKeys(selectedRowKeys);
     },
     onSelect: (record, selected, selectedRows) => {
-      console.log(`选择行: ${selected}`, record);
     },
     onSelectAll: (selected, selectedRows) => {
-      console.log(`全选: ${selected}`, selectedRows);
     },
     getCheckboxProps: (record) => ({
       disabled: false,

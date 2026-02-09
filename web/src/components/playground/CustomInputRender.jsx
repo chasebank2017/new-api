@@ -70,7 +70,6 @@ const CustomInputRender = (props) => {
                 }
               };
               reader.onerror = () => {
-                console.error('Failed to read image file:', reader.error);
                 Toast.error({
                   content: t('粘贴图片失败'),
                   duration: 2,
@@ -78,7 +77,6 @@ const CustomInputRender = (props) => {
               };
               reader.readAsDataURL(file);
             } catch (error) {
-              console.error('Failed to paste image:', error);
               Toast.error({
                 content: t('粘贴图片失败'),
                 duration: 2,

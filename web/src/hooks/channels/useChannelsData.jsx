@@ -197,7 +197,6 @@ export const useChannelsData = () => {
         const merged = { ...defaults, ...parsed };
         setVisibleColumns(merged);
       } catch (e) {
-        console.error('Failed to parse saved column preferences', e);
         initDefaultColumns();
       }
     } else {

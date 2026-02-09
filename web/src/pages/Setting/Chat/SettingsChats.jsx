@@ -75,7 +75,6 @@ export default function SettingsChats(props) {
           }))
         : [];
     } catch (error) {
-      console.error('JSON parse error:', error);
       return [];
     }
   };
@@ -105,11 +104,9 @@ export default function SettingsChats(props) {
 
   async function onSubmit() {
     try {
-      console.log('Starting validation...');
       await refForm.current
         .validate()
         .then(() => {
-          console.log('Validation passed');
           const updateArray = compareObjects(inputs, inputsRow);
           if (!updateArray.length)
             return showWarning(t('你似乎并没有修改什么'));
@@ -145,12 +142,10 @@ export default function SettingsChats(props) {
             });
         })
         .catch((error) => {
-          console.error('Validation failed:', error);
           showError(t('请检查输入'));
         });
     } catch (error) {
       showError(t('请检查输入'));
-      console.error(error);
     }
   }
 
@@ -262,7 +257,6 @@ export default function SettingsChats(props) {
           showSuccess(isEdit ? t('编辑成功') : t('添加成功'));
         })
         .catch((error) => {
-          console.error('Modal form validation error:', error);
         });
     }
   };

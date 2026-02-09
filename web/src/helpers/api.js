@@ -318,7 +318,6 @@ export async function onCustomOAuthClicked(provider, options = {}) {
       authUrl = new URL(provider.authorization_endpoint);
     } else {
       // Relative path - this is a configuration error, show error message
-      console.error('Custom OAuth authorization_endpoint must be a full URL:', provider.authorization_endpoint);
       showError('OAuth 配置错误：授权端点必须是完整的 URL（以 http:// 或 https:// 开头）');
       return;
     }
@@ -331,7 +330,6 @@ export async function onCustomOAuthClicked(provider, options = {}) {
     
     window.open(authUrl.toString());
   } catch (error) {
-    console.error('Failed to initiate custom OAuth:', error);
     showError('OAuth 登录失败：' + (error.message || '未知错误'));
   }
 }

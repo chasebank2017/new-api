@@ -55,7 +55,6 @@ export function Mermaid(props) {
         })
         .catch((e) => {
           setHasError(true);
-          console.error('[Mermaid] ', e.message);
         });
     }
   }, [props.code]);

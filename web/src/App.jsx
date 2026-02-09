@@ -74,7 +74,6 @@ function App() {
         // 如果是对象格式，使用requireAuth配置
         return modules.pricing?.requireAuth === true;
       } catch (error) {
-        console.error('解析顶栏模块配置失败:', error);
         return false; // 默认不需要登录
       }
     }

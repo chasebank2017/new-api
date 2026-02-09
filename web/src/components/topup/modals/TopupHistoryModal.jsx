@@ -78,7 +78,6 @@ const TopupHistoryModal = ({ visible, onCancel, t }) => {
         Toast.error({ content: message || t('加载失败') });
       }
     } catch (error) {
-      console.error('Load topups error:', error);
       Toast.error({ content: t('加载账单失败') });
     } finally {
       setLoading(false);

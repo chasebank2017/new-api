@@ -138,7 +138,6 @@ export const useLogsData = () => {
         }
         setVisibleColumns(merged);
       } catch (e) {
-        console.error('Failed to parse saved column preferences', e);
         initDefaultColumns();
       }
     } else {
